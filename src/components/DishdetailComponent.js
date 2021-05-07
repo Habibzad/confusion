@@ -7,13 +7,15 @@ import {
 
 function RenderDish({ dish }) {
 
-    <Card>
-        <CardImg src={dish.image} alt={dish.name} />
-        <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-        </CardBody>
-    </Card>
+    return (
+        <Card>
+            <CardImg src={dish.image} alt={dish.name} />
+            <CardBody>
+                <CardTitle>{dish.name}</CardTitle>
+                <CardText>{dish.description}</CardText>
+            </CardBody>
+        </Card>
+    )
 
 }
 
@@ -48,11 +50,13 @@ function RenderComments({ comments }) {
 
 const DishDetail = (props) => {
 
-    if (this.props.dish != null) {
+    if (props.dish != null) {
         return (
-            <div className="row">
-                <RenderDish dish={props.dish} />
-                <RenderComments comments={props.dish.comments} />
+            <div className="container">
+                <div className="row">
+                    <RenderDish dish={props.dish} />
+                    <RenderComments comments={props.dish.comments} />
+                </div>
             </div>
         )
     } else {
