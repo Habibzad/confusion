@@ -3,16 +3,14 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import DISHES from '../shared/dishes';
+import { connect } from 'react-redux'
 
-class Main extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            dishes: DISHES,
-            selectedDish: null
-        };
+const mapStateToProps = state => {
+    return {
+        dishes: state.dishes
     }
+}
+class Main extends Component {
 
     onDishSelect(dishId) {
         this.setState({ selectedDish: dishId });
@@ -26,11 +24,11 @@ class Main extends Component {
                         <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
                     </div>
                 </Navbar>
-                <Menu dish={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-                <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+                <Menu dish={this.props.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
+                <DishDetail dish={this.props.dishes.filter((dish) => dish.id === this.props.selectedDish)[0]} />
             </div>
         );
     }
 }
 
-export default Main;
+export default (connect(mapStateToProps)(Main));
