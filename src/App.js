@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.css';
-import Main from './components/MainComponent'
-import { Provider } from 'react-redux'
-import { store } from './redux/store'
+// import Main from './components/MainComponent'
+import { Navbar, NavbarBrand } from 'reactstrap'
 
 class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store} >
-        <div className="App">
-          <Main />
-        </div>
-      </Provider>
+      <div className="App">
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="#">Restorante Con Fusion</NavbarBrand>
+          </div>
+        </Navbar>
+      </div>
     );
   }
 }
